@@ -1,0 +1,535 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* src/styles/Fonts.css */
+
+/*
+   This file imports all the custom fonts used in the editor.
+   Make sure this file is imported once in your main application
+   entry point (e.g., App.js or index.js) to load all fonts.
+*/
+
+/* --- Google Fonts Imports --- */
+
+/* Sans-serif Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Verdana:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Helvetica:wght@400;700&display=swap'); /* Note: Helvetica is a system font, no direct Google Font link for it */
+@import url('https://fonts.googleapis.com/css2?family=Tahoma:wght@400;700&display=swap'); /* Note: Tahoma is a system font */
+@import url('https://fonts.googleapis.com/css2?family=Trebuchet+MS:wght@400;700&display=swap'); /* Note: Trebuchet MS is a system font */
+@import url('https://fonts.googleapis.com/css2?family=Impact:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lucida+Sans+Unicode:wght@400&display=swap'); /* Note: Lucida Sans Unicode is a system font */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Franklin+Gothic+Medium:wght@400&display=swap'); /* System font */
+@import url('https://fonts.googleapis.com/css2?family=Gill+Sans+MT:wght@400&display=swap'); /* System font */
+@import url('https://fonts.googleapis.com/css2?family=Calibri:wght@400;700&display=swap'); /* System font */
+@import url('https://fonts.googleapis.com/css2?family=Candara:wght@400;700&display=swap'); /* System font */
+
+
+/* Serif Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Georgia:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Times+New+Roman:wght@400;700&display=swap'); /* Note: Times New Roman is a system font */
+@import url('https://fonts.googleapis.com/css2?family=Palatino+Linotype:wght@400;700&display=swap'); /* Note: Palatino Linotype is a system font */
+@import url('https://fonts.googleapis.com/css2?family=Book+Antiqua:wght@400;700&display=swap'); /* Note: Book Antiqua is a system font */
+@import url('https://fonts.googleapis.com/css2?family=Garamond:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cambria:wght@400;700&display=swap'); /* Note: Cambria is a system font */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Literata:wght@400;700&display=swap');
+
+
+/* Monospace Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lucida+Console:wght@400&display=swap'); /* Note: Lucida Console is a system font */
+@import url('https://fonts.googleapis.com/css2?family=Courier+New:wght@400;700&display=swap'); /* Note: Courier New is a system font */
+@import url('https://fonts.googleapis.com/css2?family=Monaco:wght@400&display=swap'); /* Note: Monaco is a system font */
+@import url('https://fonts.googleapis.com/css2?family=Consolas:wght@400;700&display=swap'); /* Note: Consolas is a system font */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+
+/* Script/Decorative Fonts (only one from your list with a direct Google Font link) */
+@import url('https://fonts.googleapis.com/css2?family=Brush+Script+MT:wght@400&display=swap'); /* Note: Brush Script MT is a system font */
+
+/* Note: Some fonts like Arial, Helvetica, Tahoma, Trebuchet MS, Times New Roman,
+   Palatino Linotype, Book Antiqua, Lucida Sans Unicode, Lucida Console,
+   Courier New, Monaco, Calibri, Candara, Consolas, Franklin Gothic Medium,
+   Gill Sans MT, Brush Script MT are generally system fonts.
+   Google Fonts may offer similar alternatives or rely on system availability.
+   The @import rules above are for those that have direct Google Font links.
+*/
+
+:root {
+  --text-color: #213547;
+  --bg-color: rgba(255, 255, 255, 0.141);
+  --primary-color: #646cff;
+  --button-bg: #f9f9f9;
+  --footer-bg: linear-gradient(to top, #ffffff, #f3f4f6);
+  --footer-text: #333;
+  --footer-link: #000;
+  --footer-glow-1: #0070F3;
+  --footer-glow-2: #00E6A7;
+  scroll-behavior: smooth;
+}
+.quill-editor-custom .ql-editor {
+  min-height: 100%;
+  padding: 2rem;
+  line-height: 1.7;
+  font-size: 1.1rem;
+  border: 1px solid;
+  border-top: none;
+  overflow-y: auto;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  background: transparent;
+}
+* {
+  scrollbar-width: none;
+}
+* {
+  -ms-overflow-style: none;
+}
+body,
+*:not(input):not(textarea):not([contenteditable]) {
+  caret-color: transparent;
+}
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: rgba(255, 255, 255, 0.87);
+    --bg-color: #0a192f;
+    --primary-color: #1dc6ec;
+    --button-bg: #1a1a1a;
+    --footer-bg: linear-gradient(to top, #111827, #1f2937);
+    --footer-text: #f9f9f9;
+    --footer-link: #fff;
+    --footer-glow-1: #0D47A1;
+    --footer-glow-2: #00695C;
+  }
+}
+body {
+  font-family: 'Poppins', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--text-color);
+  background: var(--bg-color);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+footer {
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 2rem;
+  width: 100%;
+  text-align: center;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.footer-links a {
+  color: var(--footer-link);
+  transition: color 0.3s;
+}
+.footer-links a:hover {
+  opacity: 0.8;
+}
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.social-icons a {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+.social-icons a:hover {
+  transform: scale(1.1);
+}
+.footer-bottom {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+.text-gradient-blue {
+  background: linear-gradient(to right, #0967bf, #08b1f4);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.text-gradient-pink {
+  background: linear-gradient(to right, #ec0ce1, #066dbb);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.home-wrapper {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  background: var(--background);
+}
+@media (min-width: 877px) {
+  .custom\:flex {
+    display: flex;
+  }
+  .custom\:hidden {
+    display: none;
+  }
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+  width: 80%;
+  max-width: 800px;
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: red;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.close-btn:hover {
+  background: darkred;
+}
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 15s ease infinite;
+}
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+}
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+/* src/components/CookieConsent.css */
+
+/* --- Overlay & Background Blur --- */
+.cookie-consent-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Slightly transparent overlay */
+    z-index: 9999; /* Ensure it's on top of everything */
+    display: flex; /* For centering or positioning banner/modal */
+    justify-content: flex-end; /* Align to right for banner */
+    align-items: flex-end; /* Align to bottom for banner */
+    backdrop-filter: blur(5px); /* Apply blur to content behind */
+    -webkit-backdrop-filter: blur(5px); /* Safari support */
+}
+
+/* --- Small Bottom-Right Banner Box --- */
+.cookie-consent-banner-wrapper {
+    position: absolute; /* Position within the overlay */
+    bottom: 20px;
+    right: 20px;
+    max-width: 380px; /* Small box size */
+    width: 90%; /* Responsive width */
+    font-family: 'Segoe UI', Arial, sans-serif; /* Formal font */
+    animation: slideInBottomRight 0.5s ease-out; /* Animation */
+}
+
+.cookie-consent-banner {
+    background-color: #f8f9fa; /* Light, formal background */
+    color: #343a40; /* Dark grey text */
+    padding: 20px 25px;
+    border: 1px solid #dee2e6; /* Subtle border */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 4px; /* Slight radius for the box itself */
+}
+
+.cookie-consent-banner p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.cookie-consent-banner a {
+    color: #0056b3; /* Formal blue for links */
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.cookie-consent-banner a:hover {
+    color: #003f80;
+}
+
+.cookie-banner-actions {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    gap: 8px; /* Space between buttons */
+    justify-content: flex-end; /* Align buttons to the right */
+}
+
+/* --- Formal Button Styling (border-radius: 0) --- */
+.formal-button {
+    padding: 10px 18px;
+    border: 1px solid #ced4da; /* Subtle border for all buttons */
+    border-radius: 0; /* NO border-radius */
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    white-space: nowrap; /* Prevent text wrapping inside buttons */
+}
+
+.formal-button.accept {
+    background-color: #28a745; /* Green */
+    color: white;
+    border-color: #28a745;
+}
+.formal-button.accept:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.formal-button.reject {
+    background-color: #dc3545; /* Red */
+    color: white;
+    border-color: #dc3545;
+}
+.formal-button.reject:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+.formal-button.customize {
+    background-color: #007bff; /* Blue */
+    color: white;
+    border-color: #007bff;
+}
+.formal-button.customize:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+/* --- Customize Modal Styling (Small and Formal) --- */
+.cookie-customize-modal {
+    position: fixed; /* Fixed within the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Same overlay for blur effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* Ensure it's above the main banner overlay */
+    backdrop-filter: blur(5px); /* Re-apply blur for modal background */
+    -webkit-backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease-out; /* Simple fade in */
+}
+
+.cookie-modal-content {
+    background-color: #f8f9fa; /* Light formal background */
+    color: #343a40;
+    padding: 30px;
+    border-radius: 4px; /* Formal, slight radius for modal box */
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    max-width: 500px; /* Small modal size */
+    width: 90%;
+    max-height: 85vh; /* Limit height for scrollability */
+    overflow-y: auto; /* Enable scrolling if content overflows */
+    font-family: 'Segoe UI', Arial, sans-serif;
+    animation: zoomIn 0.3s ease-out; /* Zoom in animation */
+}
+
+.cookie-modal-content h2 {
+    margin-top: 0;
+    color: #343a40;
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee; /* Separator */
+}
+
+.modal-description {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.cookie-category {
+    margin-bottom: 15px;
+    padding: 12px;
+    border: 1px solid #e9ecef; /* Lighter border */
+    border-radius: 4px;
+    background-color: #ffffff; /* White background for categories */
+}
+
+.cookie-category h3 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    color: #495057;
+}
+
+.cookie-category input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.1); /* Slightly larger checkbox */
+    cursor: pointer;
+}
+
+.cookie-category input[type="checkbox"]:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.cookie-category p {
+    font-size: 12px;
+    color: #6c757d;
+    margin: 0;
+    padding-left: 28px; /* Align text with checkbox */
+}
+
+.cookie-modal-actions {
+    margin-top: 25px;
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 10px;
+}
+
+.formal-button.save {
+    background-color: #28a745; /* Green */
+    color: white;
+    border-color: #28a745;
+}
+.formal-button.save:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.formal-button.cancel {
+    background-color: #6c757d; /* Grey */
+    color: white;
+    border-color: #6c757d;
+}
+.formal-button.cancel:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+
+/* --- Animations --- */
+@keyframes slideInBottomRight {
+    from {
+        transform: translate(50%, 50%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 600px) {
+    .cookie-consent-banner-wrapper {
+        bottom: 10px;
+        right: 10px;
+        max-width: calc(100% - 20px);
+    }
+    .cookie-consent-banner {
+        padding: 15px 20px;
+    }
+    .cookie-banner-actions {
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: stretch; /* Stretch buttons to full width */
+    }
+    .formal-button {
+        width: 100%; /* Full width buttons */
+        margin: 0; /* Remove horizontal margin */
+    }
+
+    .cookie-customize-modal {
+        padding: 10px;
+    }
+    .cookie-modal-content {
+        padding: 20px;
+    }
+    .cookie-modal-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

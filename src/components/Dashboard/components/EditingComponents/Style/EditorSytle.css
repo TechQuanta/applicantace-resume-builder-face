@@ -1,0 +1,694 @@
+
+/* --- Editor Container Styling (Fixed Height, no flex-grow) --- */
+.editor-container {
+    display: flex;
+    flex-direction: column;
+    /* Removed min-height and height: 80vh to directly set 100vh behavior */
+    height: 120vh; /* Editor always takes full viewport height */
+    border: 1px solid #dcdcdc; /* Lighter, subtle border */
+    border-radius: 1px;
+    overflow: hidden; /* Ensures rounded corners are respected and internal overflow is handled */
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+    background-color: #fff;
+
+    margin: 0 auto; /* Center horizontally, remove vertical margin to allow 100vh */
+    max-width: 960px; /* Optimal max-width for content readability */
+    width: calc(100% - 40px); /* Take full available width within max-width, with side padding */
+    transition: all 0.3s ease-in-out; /* Smooth transitions for fullscreen */
+    height:100%;
+    /* If you still want some padding around it when not fullscreen, adjust #root padding */
+}
+
+/* Fullscreen Mode Styling (still needed for consistency, though less impactful with 100vh base) */
+
+/* --- Custom Toolbar Styling --- */
+#toolbar {
+    background-color: #fdfdfd; /* Very light background for toolbar */
+    border-bottom: 1px solid #e5e5e5; /* Subtle bottom border */
+    justify-content:center;
+    align-items: center;
+    width:100%;
+    z-index:9;
+    position:sticky;
+}
+
+
+/* Custom Toolbar Styling */
+#toolbar {
+    display: flex;
+    flex-wrap: wrap; /* Allow toolbar items to wrap on smaller screens */
+    align-items:center;
+    background-color: #f8f8f8;
+    position:sticky;
+    border-bottom: 1px solid #e0e0e0;
+    justify-content: center; /* Center toolbar items */
+}
+
+#toolbar .ql-formats {
+    gap: 6px; /* Space between buttons/selects within a group */
+    display:flex ;
+    flex-wrap: wrap; /* Allow toolbar items to wrap on smaller screens */
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Toolbar Buttons */
+#toolbar button,
+#toolbar select,
+#toolbar input[type="number"],
+#toolbar input[type="range"] {
+    background-color: #ffffff;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #600770;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width:fit-content; /* Ensure consistent button size */
+    height: 30px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+#toolbar button:hover:not(:disabled),
+#toolbar select:hover:not(:disabled),
+#toolbar input[type="number"]:hover:not(:disabled) {
+    background-color: #f0f0f0; /* Lighter hover background */
+    border-color: #c8c8c8;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12); /* Enhanced hover shadow */
+}
+
+#toolbar button:active:not(:disabled) {
+    background-color: #e0e0e0;
+    border-color: #b8b8b8;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.18); /* Stronger active inset shadow */
+}
+
+/* Active State for Quill Buttons */
+#toolbar button.ql-active,
+#toolbar .ql-picker.ql-active .ql-picker-label { /* Target Quill's active state for dropdowns */
+    background-color: #e0f2fe; /* Light blue for active state */
+    border-color: #90caf9; /* Matching blue border */
+    color: #1a73e8; /* Google-like blue for active text */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#toolbar button:disabled,
+#toolbar select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #f9f9f9;
+    color: #999;
+    box-shadow: none;
+}
+
+/* Icons within buttons */
+#toolbar button svg {
+    font-size: 1.2em; /* Slightly larger icons */
+    color: #666; /* Softer icon color */
+}
+
+#toolbar button.ql-active svg {
+    color: #1a73e8; /* Active icon color matches active text */
+}
+
+.toolbar-icon {
+    font-size: 1.2em;
+    color: #666;
+    margin-right: 6px; /* Increased space between icon and text/select */
+}
+
+/* Quill's default dropdown labels (e.g., Font, Size, Headers) */
+.ql-snow .ql-picker-label {
+    padding: 0 8px; /* Padding for readability */
+    color: #444;
+}
+
+/* Specific styling for Quill's built-in dropdowns (font, size, header) */
+.ql-snow .ql-picker {
+    line-height: normal; /* Ensure proper line-height */
+    min-width: 30px; /* Adequate width for font names */
+}
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="1"]::before { content: "Heading 1"; }
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="2"]::before { content: "Heading 2"; }
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="3"]::before { content: "Heading 3"; }
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="4"]::before { content: "Heading 4"; }
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="5"]::before { content: "Heading 5"; }
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="6"]::before { content: "Heading 6"; }
+.ql-snow .ql-picker.ql-header .ql-picker-label::before { content: "Normal"; } /* Default text */
+
+/* Font Size dropdown values (if using Quill's default 'size' module) */
+.ql-snow .ql-picker.ql-size .ql-picker-label::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item::before { content: attr(data-value); } /* Display value as is (e.g., "14px") */
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="small"]::before { content: "Small"; }
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="large"]::before { content: "Large"; }
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="huge"]::before { content: "Huge"; }
+
+/* --- Specific Styles for Quill's Dropdown Panels (font, size, header) --- */
+.ql-snow .ql-picker.ql-font .ql-picker-options,
+.ql-snow .ql-picker.ql-size .ql-picker-options,
+.ql-snow .ql-picker.ql-header .ql-picker-options {
+    height: 200px; /* Fixed height for the dropdown panel */
+    width: 70px;  /* Fixed width for the dropdown panel */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Hide horizontal scrolling */
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    border-radius: 4px;
+    background-color: white;
+}
+
+/* Jot Toggle Button (AI) */
+.jot-toggle {
+    background-color: #fd00a0; /* Light blue for AI button */
+    border-color: #91d5ff;
+    color: #000000;
+    font-weight: 600; /* Slightly bolder text */
+    gap: 6px;
+    padding: 7px 10px; /* Adjusted padding */
+}
+
+.jot-toggle.active {
+    background-color: #52c41a; /* Green for active Jot (success color) */
+    color: white;
+    border-color: #52c41a;
+    box-shadow: 0 2px 8px rgba(82, 196, 26, 0.4); /* Green shadow */
+}
+
+.jot-toggle.active:hover {
+    background-color: #48a614;
+    border-color: #48a614;
+}
+
+.jot-toggle .toolbar-icon {
+    margin-right: 0; /* Icon-only button, no text */
+    color: inherit; /* Inherit color from button state */
+}
+
+/* Font Size Controls */
+.font-size-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* More space for visual separation */
+}
+
+.font-size-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 120px; /* Wider slider for more precise control */
+    height: 6px; /* Thinner slider track */
+    background: #e0e0e0;
+    outline: none;
+    opacity: 0.9;
+    transition: opacity .2s;
+    border-radius: 3px;
+    flex-shrink: 0; /* Prevent slider from shrinking */
+}
+
+.font-size-slider:hover {
+    opacity: 1;
+}
+
+.font-size-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px; /* Slightly smaller thumb */
+    height: 18px;
+    background: #007bff;
+    cursor: grab; /* Indicates draggable */
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3); /* Blue shadow */
+    margin-top: -6px; /* Vertically center the thumb */
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.font-size-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: #007bff;
+    cursor: grab;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3);
+    border: none; /* Remove default Firefox border */
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.font-size-slider::-webkit-slider-thumb:active,
+.font-size-slider::-moz-range-thumb:active {
+    cursor: grabbing;
+    background-color: #0056b3; /* Darker blue when grabbing */
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.5);
+}
+
+.font-size-input {
+    width: 55px; /* Wider for better readability of 2-digit numbers */
+    text-align: center;
+    padding: 6px 5px; /* Adjusted padding */
+    font-size: 0.95em;
+}
+
+/* --- Color Picker Groups (for aligning icon with Quill's select) --- */
+.ql-color-picker-group,
+.ql-background-picker-group {
+    display: flex;
+    align-items: center;
+    gap: 4px; /* Tighter gap */
+}
+
+/* Style for Quill's color and background SELECT elements */
+.ql-snow .ql-color,
+.ql-snow .ql-background {
+    -webkit-appearance: none; /* Remove default styling for Chrome/Safari */
+    -moz-appearance: none; /* Remove default styling for Firefox */
+    appearance: none; /* Standard property */
+    border: 1px solid #d8d8d8;
+    border-radius: 6px;
+    padding: 0; /* Remove default padding from select */
+    width: auto; /* Forced width for the button-like element in toolbar */
+    height:auto; /* Match button height */
+    cursor: pointer;
+    background-color: #ffffff;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); /* Consistent shadow */
+}
+
+/* Style the color swatch within the native color input */
+.ql-snow .ql-color::-webkit-color-swatch-wrapper,
+.ql-snow .ql-background::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+.ql-snow .ql-color::-webkit-color-swatch,
+.ql-snow .ql-background::-webkit-color-swatch {
+    border: none; /* Remove default border from color swatch */
+    border-radius: 4px; /* Slightly rounded swatch */
+}
+
+/* Hide the default dropdown arrow that might appear on some browsers/OS */
+.ql-snow .ql-color::after,
+.ql-snow .ql-background::after {
+    content: none !important; /* Hide default dropdown arrow if it appears */
+}
+
+.ql-snow .ql-color:hover,
+.ql-snow .ql-background:hover {
+    background-color: #f0f0f0;
+    border-color: #c8c8c8;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+}
+
+.ql-snow .ql-color:active,
+.ql-snow .ql-background:active {
+    background-color: #e0e0e0;
+    border-color: #b8b8b8;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.18);
+}
+
+
+/* Margin Control Group */
+.margin-control-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #f6f6f6;
+    border-radius: 8px;
+    padding: 6px 10px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.margin-label {
+    font-size: 0.95em;
+    color: #555;
+    white-space: nowrap;
+}
+
+.margin-input {
+    width: 65px; /* Wider for better user input */
+    text-align: center;
+    padding: 6px 6px;
+    font-size: 0.95em;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #333;
+    -moz-appearance: textfield; /* Remove number input arrows in Firefox */
+}
+.margin-input::-webkit-outer-spin-button,
+.margin-input::-webkit-inner-spin-button {
+    -webkit-appearance: none; /* Remove number input arrows in Chrome/Safari */
+    margin: 0;
+}
+
+.margin-unit {
+    font-size: 0.85em;
+    color: #777;
+    white-space: nowrap;
+}
+
+/* --- Quill Editor Area (Now scrollable within fixed container) --- */
+.quill-editor-main {
+    flex-grow: 1; /* This will still allow it to take the *remaining* space, which is critical */
+    display: flex;
+    flex-direction: column;
+    border: none !important; /* Remove default Quill border as container already has one */
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    min-height: 0; /* Essential for flex-grow to work correctly inside a column container */
+}
+
+.quill-editor-main .ql-editor {
+    flex-grow: 1; /* Allow the actual editor content to grow within the main quill area */
+    overflow-y: auto; /* ENABLE SCROLLING FOR THE CONTENT */
+    padding: 30px; /* More generous padding inside the editor */
+    line-height: 1.7; /* Increased line-height for better readability */
+    font-size: 16px; /* Default font size for editor content */
+    color: #333;
+    background-color: #ffffff;
+    outline: none; /* Remove outline on focus */
+    box-sizing: border-box; /* Include padding in height */
+    /* Removed min-height: 100% here as flex-grow takes care of sizing within parent */
+    width: 100%; /* Ensure content area takes full width */
+}
+
+/* Placeholder styling */
+.quill-editor-main .ql-editor.ql-blank::before {
+    color: #a0a0a0; /* Softer grey for placeholder */
+    font-style: italic; /* Placeholder in italics */
+    left: 30px; /* Align with padding */
+    right: 30px; /* Align with padding */
+    top: 30px; /* Align with padding */
+}
+
+/* Ensure images within editor are responsive */
+.quill-editor-main .ql-editor img {
+    max-width: 100%;
+    height: auto;
+    margin: 15px auto; /* Center images and add vertical space */
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12); /* Slightly stronger shadow for images */
+}
+
+/* Quill's default elements for lists, blockquotes, etc. */
+.quill-editor-main .ql-editor ol,
+.quill-editor-main .ql-editor ul {
+    padding-left: 2em; /* Standard indentation for lists */
+    margin: 0.8em 0; /* Vertical spacing for lists */
+}
+.quill-editor-main .ql-editor li {
+    margin-bottom: 0.2em; /* Small space between list items */
+}
+
+.quill-editor-main .ql-editor blockquote {
+    border-left: 5px solid #ccc; /* Thicker border */
+    margin: 1.5em 0; /* More vertical space */
+    padding-left: 1.2em; /* More padding */
+    color: #666;
+    font-style: italic;
+    background-color: #f9f9f9; /* Light background for blockquote */
+    border-radius: 4px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.quill-editor-main .ql-editor pre.ql-syntax {
+    background-color: #272c34; /* Darker background for code blocks */
+    color: #e0e6f0; /* Light text for code */
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin: 1.5em 0;
+    font-family: 'Fira Code', 'Consolas', 'Courier New', monospace; /* Fira Code if available, otherwise monospaced */
+    font-size: 0.9em;
+    white-space: pre-wrap;
+    word-break: break-word; /* Ensure long lines break */
+    overflow-x: auto; /* For very long lines of code */
+}
+.quill-editor-main .ql-editor a {
+    color: #1a73e8; /* Consistent link color */
+    text-decoration: underline;
+}
+.quill-editor-main .ql-editor strong, .ql-editor b {
+    font-weight: 700; /* Use numerical weight for consistency */
+}
+.quill-editor-main .ql-editor em, .ql-editor i {
+    font-style: italic;
+}
+.quill-editor-main .ql-editor p {
+    margin-bottom: 1em; /* Consistent paragraph spacing */
+}
+.quill-editor-main .ql-editor h1, .ql-editor h2, .ql-editor h3, .ql-editor h4, .ql-editor h5, .ql-editor h6 {
+    margin-top: 1.5em; /* Space above headings */
+    margin-bottom: 0.8em; /* Space below headings */
+    font-weight: 600; /* Slightly bolder headings */
+    color: #222;
+}
+.quill-editor-main .ql-editor h1 { font-size: 2.2em; }
+.quill-editor-main .ql-editor h2 { font-size: 1.8em; }
+.quill-editor-main .ql-editor h3 { font-size: 1.5em; }
+.quill-editor-main .ql-editor h4 { font-size: 1.2em; }
+.quill-editor-main .ql-editor h5 { font-size: 1.1em; }
+.ql-editor-main .ql-editor h6 { font-size: 1em; }
+
+
+/* Styling for custom fonts in the editor */
+/* These classes are applied by Quill based on the 'font' format */
+/* Ensure these match your FONT_WHITELIST exactly (case-insensitive and spaces replaced with hyphens) */
+.ql-font-arial { font-family: 'Arial', sans-serif; }
+.ql-font-verdana { font-family: 'Verdana', sans-serif; }
+.ql-font-helvetica { font-family: 'Helvetica', sans-serif; }
+.ql-font-tahoma { font-family: 'Tahoma', sans-serif; }
+.ql-font-trebuchet-ms { font-family: 'Trebuchet MS', sans-serif; }
+.ql-font-impact { font-family: 'Impact', sans-serif; }
+.ql-font-lucida-sans-unicode { font-family: 'Lucida Sans Unicode', sans-serif; }
+.ql-font-lato { font-family: 'Lato', sans-serif; }
+.ql-font-open-sans { font-family: 'Open Sans', sans-serif; }
+.ql-font-roboto { font-family: 'Roboto', sans-serif; }
+.ql-font-inter { font-family: 'Inter', sans-serif; }
+.ql-font-montserrat { font-family: 'Montserrat', sans-serif; }
+.ql-font-oswald { font-family: 'Oswald', sans-serif; }
+.ql-font-pt-sans { font-family: 'PT Sans', sans-serif; }
+.ql-font-noto-sans { font-family: 'Noto Sans', sans-serif; }
+.ql-font-ubuntu { font-family: 'Ubuntu', sans-serif; }
+.ql-font-source-sans-pro { font-family: 'Source Sans Pro', sans-serif; }
+.ql-font-fira-sans { font-family: 'Fira Sans', sans-serif; }
+.ql-font-quicksand { font-family: 'Quicksand', sans-serif; }
+.ql-font-nunito { font-family: 'Nunito', sans-serif; }
+.ql-font-karla { font-family: 'Karla', sans-serif; }
+.ql-font-rubik { font-family: 'Rubik', sans-serif; }
+.ql-font-ibm-plex-sans { font-family: 'IBM Plex Sans', sans-serif; }
+.ql-font-exo-2 { font-family: 'Exo 2', sans-serif; }
+.ql-font-cabin { font-family: 'Cabin', sans-serif; }
+.ql-font-franklin-gothic-medium { font-family: 'Franklin Gothic Medium', sans-serif; }
+.ql-font-gill-sans-mt { font-family: 'Gill Sans MT', sans-serif; }
+.ql-font-calibri { font-family: 'Calibri', sans-serif; }
+.ql-font-candara { font-family: 'Candara', sans-serif; }
+.ql-font-georgia { font-family: 'Georgia', serif; }
+.ql-font-times-new-roman { font-family: 'Times New Roman', serif; }
+.ql-font-palatino-linotype { font-family: 'Palatino Linotype', serif; }
+.ql-font-book-antiqua { font-family: 'Book Antiqua', serif; }
+.ql-font-garamond { font-family: 'Garamond', serif; }
+.ql-font-cambria { font-family: 'Cambria', serif; }
+.ql-font-merriweather { font-family: 'Merriweather', serif; }
+.ql-font-playfair-display { font-family: 'Playfair Display', serif; }
+.ql-font-lora { font-family: 'Lora', serif; }
+.ql-font-bitter { font-family: 'Bitter', serif; }
+.ql-font-crimson-text { font-family: 'Crimson Text', serif; }
+.ql-font-vollkorn { font-family: 'Vollkorn', serif; }
+.ql-font-literata { font-family: 'Literata', serif; }
+.ql-font-lucida-console { font-family: 'Lucida Console', monospace; }
+.ql-font-courier-new { font-family: 'Courier New', monospace; }
+.ql-font-monaco { font-family: 'Monaco', monospace; }
+.ql-font-consolas { font-family: 'Consolas', monospace; }
+.ql-font-space-mono { font-family: 'Space Mono', monospace; }
+.ql-font-brush-script-mt { font-family: 'Brush Script MT', cursive; }
+
+
+/* --- Message Display Styling (if you have one) --- */
+.message-display {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(40, 44, 52, 0.9); /* Darker, slightly transparent background */
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 8px;
+    z-index: 10000; /* Ensure it's above everything */
+    font-size: 0.9em;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-out, visibility 0.4s ease-out; /* Smoother transition */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    min-width: 250px;
+    text-align: center;
+}
+
+.message-display.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.message-display.info {
+    background-color: #17a2b8; /* Bootstrap info blue */
+}
+
+.message-display.error {
+    background-color: #dc3545; /* Bootstrap error red */
+}
+.message-display.success {
+    background-color: #28a745; /* Bootstrap success green */
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    .editor-container {
+        max-width: 95%; /* Slightly more width on larger tablets */
+        /* height: 100vh; - already 100vh, no change */
+    }
+}
+
+@media (max-width: 768px) {
+    .editor-container {
+        max-width: 100%; /* Allow full width on smaller tablets */
+        border-radius: 0; /* No rounded corners on small screens */
+        box-shadow: none; /* No shadow */
+        /* height: 100vh; - already 100vh, no change */
+    }
+
+    #root {
+        padding: 0; /* Remove padding from root to allow editor to fill height */
+    }
+
+    #toolbar {
+        flex-direction: row; /* Keep it row-based but allow wrapping */
+        justify-content: flex-start; /* Align left for more space */
+        padding: 8px 10px;
+        gap: 6px;
+        border-radius: 0; /* No rounded corners for toolbar either */
+        max-height: auto; /* Allow more height for wrapping toolbar items on small screens */
+    }
+
+    #toolbar .ql-formats {
+        padding: 3px 6px;
+        gap: 4px;
+        border-radius: 6px;
+    }
+
+    #toolbar button,
+    #toolbar select,
+    #toolbar input[type="number"],
+    #toolbar input[type="range"] {
+        padding: 6px 10px; /* Slightly reduced padding */
+        min-width: 36px; /* Reduced min width */
+        height: 36px; /* Reduced height */
+        font-size: 0.9em;
+        border-radius: 5px;
+    }
+
+    /* Adjust specific Quill dropdowns for responsive */
+    .ql-snow .ql-picker.ql-font .ql-picker-options,
+    .ql-snow .ql-picker.ql-size .ql-picker-options,
+    .ql-snow .ql-picker.ql-header .ql-picker-options {
+        height: 150px; /* Smaller height on smaller screens */
+        width: 60px; /* Smaller width on smaller screens */
+    }
+
+    /* Adjust color selectors for smaller screens */
+    .ql-snow .ql-color,
+    .ql-snow .ql-background {
+        width: 60px; /* Adjust width for responsive */
+        height: 36px; /* Adjust height for responsive */
+    }
+
+    .font-size-slider {
+        width: 100px;
+    }
+
+    .font-size-input {
+        width: 50px;
+    }
+
+
+    .quill-editor-main .ql-editor {
+        padding: 20px; /* Reduced padding for smaller screens */
+        font-size: 15px; /* Slightly smaller base font size */
+    }
+}
+
+@media (max-width: 480px) {
+    #toolbar {
+        gap: 1px;
+        padding: 0px;
+    }
+
+    #toolbar .ql-formats {
+        padding: 2px 4px;
+        gap: 3px;
+        flex-wrap: wrap; /* Allow individual groups to wrap */
+        justify-content: flex-start; /* Center items within a wrapped group */
+    }
+
+    #toolbar button,
+    #toolbar select,
+    #toolbar input[type="number"],
+    #toolbar input[type="range"] {
+        padding: 4px 8px;
+        min-width: 32px;
+        height: 32px;
+        font-size: 0.8em;
+    }
+
+    /* Adjust specific Quill dropdowns for very small screens */
+    .ql-snow .ql-picker.ql-font .ql-picker-options,
+    .ql-snow .ql-picker.ql-size .ql-picker-options,
+    .ql-snow .ql-picker.ql-header .ql-picker-options {
+        height: 120px; /* Even smaller height */
+        width: 50px; /* Even smaller width */
+    }
+
+    /* Adjust custom color/background selects for very small screens */
+    .ql-snow .ql-color,
+    .ql-snow .ql-background {
+        width: 50px; /* Adjust width for very small screens */
+        height: 32px; /* Adjust height for very small screens */
+    }
+
+    .font-size-slider {
+        width: 60px;
+    }
+
+    .font-size-input {
+        width: 40px;
+    }
+
+    .quill-editor-main .ql-editor {
+        padding: 15px; /* Even less padding on very small screens */
+        font-size: 14px; /* Smallest base font size */
+    }
+}
+/* Editor Content Separator */
+.editor-content-separator {
+    border: none; /* Remove default border */
+    width:100%;
+    height: 2px; /* Super thin line */
+    background: linear-gradient(to right,
+        rgba(0, 210, 247, 0) 0%,    /* Transparent gray start */
+        #e600ff 25%,                 /* Solid gray for contrast */
+        #888888 50%,                 /* Darker gray in the middle */
+        #b0b0b0 75%,                 /* Solid gray again */
+        rgb(251, 0, 0) 100%   /* Transparent gray end */
+    );
+    border-radius: 0; /* Keep it sharp */
+    opacity: 0.7; /* Slightly transparent for a delicate look */
+    transition: all 0.3s ease-in-out; /* Smooth transitions */
+}
+
+/* Optional: Subtle hover effect for interactivity */
+.editor-content-separator:hover {
+    opacity: 1; /* Fully opaque on hover */
+    box-shadow: 0 0 5px rgba(136, 136, 136, 0.4); /* Soft glow */
+}
